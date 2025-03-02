@@ -1,10 +1,11 @@
+// DYNAMIC PROGRAMMING IMPLEMENTAION OF GRID PROBLEM
 #include <iostream>
 #include <chrono>
 #include <vector>
 using namespace std;
 using namespace std::chrono;
 
-// Dynamic Programming Implementaion of Grid Problem
+// recursion
 int dp(int n, int m, vector <vector<int>> &grid) {
     if (n == 0 || m == 0) {
         return 0;
@@ -45,7 +46,7 @@ int main() {
     }
     cout << grid1[n][m] << endl;
     auto stop1 = high_resolution_clock::now();
-    //print timme taken by iteration
+    // print timme taken by iteration
     auto duration1 = duration_cast<microseconds>(stop1 - start1);
     cout << duration1.count() << endl;
     
