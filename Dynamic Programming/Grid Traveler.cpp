@@ -21,30 +21,30 @@ int main() {
     cin >> n >> m;
 
     // using recursion
-    vector <vector<int>> grid(n + 1, vector<int>(m + 1, -1));
+    vector <vector<int>> grid_1(n + 1, vector<int>(m + 1, -1));
     
     auto start = high_resolution_clock::now();
-    cout << dp(n, m, grid) << endl;
+    cout << dp(n, m, grid_1) << endl;
     auto stop = high_resolution_clock::now();
     // print time taken by recursion
     auto duration = duration_cast<microseconds>(stop - start);
     cout << duration.count() << endl;
 
     // using iteration
-    vector <vector<int>> grid1(n + 1, vector<int> (m + 1));
+    vector <vector<int>> grid_2(n + 1, vector<int> (m + 1));
     auto start1 = high_resolution_clock::now();
     for (int i = 1; i <= n; i++) {
-        grid1[i][1] = 1;
+        grid_2[i][1] = 1;
     }
     for (int j = 1; j <= m; j++) {
-        grid1[1][j] = 1;
+        grid_2[1][j] = 1;
     }
     for (int i = 2; i <= n; i++) {
         for (int j = 2; j <= m; j++) {
-            grid1[i][j] = grid1[i-1][j] + grid1[i][j-1];
+            grid_2[i][j] = grid_2[i-1][j] + grid_2[i][j-1];
         }
     }
-    cout << grid1[n][m] << endl;
+    cout << grid_2[n][m] << endl;
     auto stop1 = high_resolution_clock::now();
     // print timme taken by iteration
     auto duration1 = duration_cast<microseconds>(stop1 - start1);
