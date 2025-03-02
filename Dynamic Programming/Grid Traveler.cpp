@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <chrono>
+#include <vector>
 using namespace std;
 using namespace std::chrono;
 
@@ -10,8 +12,7 @@ int dp(int n, int m, vector <vector<int>> &grid) {
         return 1;
     } else if (grid[n][m] != -1) {
         return grid[n][m];
-    }
-    return grid[n][m] = dp(n-1, m, grid) + dp(n, m-1, grid);
+    } else return grid[n][m] = dp(n-1, m, grid) + dp(n, m-1, grid);
 }
 
 int main() {
@@ -20,9 +21,11 @@ int main() {
 
     // using recursion
     vector <vector<int>> grid(n + 1, vector<int>(m + 1, -1));
+    
     auto start = high_resolution_clock::now();
     cout << dp(n, m, grid) << endl;
     auto stop = high_resolution_clock::now();
+    // print time taken by recursion
     auto duration = duration_cast<microseconds>(stop - start);
     cout << duration.count() << endl;
 
@@ -42,7 +45,9 @@ int main() {
     }
     cout << grid1[n][m] << endl;
     auto stop1 = high_resolution_clock::now();
+    //print timme taken by iteration
     auto duration1 = duration_cast<microseconds>(stop1 - start1);
     cout << duration1.count() << endl;
+    
     return 0;
 }
