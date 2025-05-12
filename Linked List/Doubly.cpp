@@ -186,6 +186,7 @@ int main() {
     list1.deleteNode(100);
     list1.display();
     list1.search(60);
+    list1.search(30);
 
     return 0;
 }
